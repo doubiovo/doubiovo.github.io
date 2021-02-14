@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Hhhxiao">
+  <meta name="keywords" content="">
+  <title>android 的广播 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="android 的广播">
+              
+                android 的广播
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-05-01 10:59" pubdate>
+        2018年5月1日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      990 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">android 的广播</h1>
+            
+            <div class="markdown-body">
+              <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>安卓的广播机制是一套十分灵活的<strong>消息/信号</strong>的<strong>发送(send)/接收（receive）</strong>机制，系统或者应用发出的广播（消息）可以覆盖几乎整个Android,因此广播机制是跨应用的，全局的。</p>
+<a id="more"></a>
+<h2 id="自定义个广播接收器-custom-BroadcastReceiver"><a href="#自定义个广播接收器-custom-BroadcastReceiver" class="headerlink" title="自定义个广播接收器(custom BroadcastReceiver)"></a>自定义个广播接收器(custom BroadcastReceiver)</h2><p>广播接收器的实质是一个监听器(接收到广播时执行相应的动作)，创建该监听器只需创建一个继承自<code>BroadcastReceiver</code>的类，并重写(override)其中的<code>onReceive</code>方法：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-keyword">package</span> com.notice.agno3.receiver;<br><br><span class="hljs-keyword">import</span> android.content.<span class="hljs-type">BroadcastReceiver</span>;<br><span class="hljs-keyword">import</span> android.content.<span class="hljs-type">Context</span>;<br><span class="hljs-keyword">import</span> android.content.<span class="hljs-type">Intent</span>;<br><br>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BroadcastReceiver</span> </span>&#123;<br><span class="hljs-meta">@Override</span><br>public void onReceive(<span class="hljs-type">Context</span> context, <span class="hljs-type">Intent</span> intent) &#123;<br><span class="hljs-comment">//<span class="hljs-doctag">TODO:</span>write what you want to do when receive a broadcast,such as a toast:</span><br><span class="hljs-type">Toast</span>.makeText(context,<span class="hljs-string">&quot;network changed&quot;</span> ,<span class="hljs-type">Toast</span>.<span class="hljs-type">LENGTH_SHORT</span> ).show();<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样就写好了自定义的receiver ，方法体里面写在收到广播的时候要干的事情。</p>
+<h2 id="使用自定义的广播接收器-use-your-customized-BroadcastReceiver"><a href="#使用自定义的广播接收器-use-your-customized-BroadcastReceiver" class="headerlink" title="使用自定义的广播接收器(use your customized BroadcastReceiver)"></a>使用自定义的广播接收器(use your customized BroadcastReceiver)</h2><p>  要有广播才能使用广播接收器，目前先使用系统自带的广播(后面有自定义广播)，例如：在手机的网络情况发生变化时系统会发一条值为<code>android.net.conn.CONNECTIVITY_CHANGE</code>的广播。<br>  使用接收器的过程可以称为注册，注册分为<strong>动态注册</strong>和<strong>静态注册</strong>两种。</p>
+<h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a>动态注册</h3><p>  首先利用<code>IntentFilter（意图筛选器）</code>把值为<code>android.net.conn.CONNECTIVITY_CHANGE</code>的广播筛选出来;然后利用<code>registerReceiver</code>方法进行注册；最后不要忘记在<code>onDestroy()</code>方法中取消注册：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">//MainActivity.java</span><br><span class="hljs-keyword">package</span> com.notice.agno3.receiver;<br><span class="hljs-keyword">import</span> android.content.<span class="hljs-type">IntentFilter</span>;<br><span class="hljs-keyword">import</span> android.support.v7.app.<span class="hljs-type">AppCompatActivity</span>;<br><span class="hljs-keyword">import</span> android.os.<span class="hljs-type">Bundle</span>;<br><br>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>&#123;<br><br><span class="hljs-keyword">private</span> <span class="hljs-type">IntentFilter</span> intentFilter;<br><span class="hljs-keyword">private</span>  <span class="hljs-type">MyReceiver</span> myReceiver;<br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> void onCreate(<span class="hljs-type">Bundle</span> savedInstanceState) &#123;<br><span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>setContentView(<span class="hljs-type">R</span>.layout.activity_main);<br>intentFilter = <span class="hljs-keyword">new</span> <span class="hljs-type">IntentFilter</span>();<br><span class="hljs-comment">//set the filter</span><br>intentFilter.addAction(<span class="hljs-string">&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;</span>);<br><span class="hljs-comment">//register the broadcast</span><br>myReceiver = <span class="hljs-keyword">new</span> <span class="hljs-type">MyReceiver</span>();<br>registerReceiver(myReceiver, intentFilter);<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> void onDestroy() &#123;<br><span class="hljs-keyword">super</span>.onDestroy();<br>unregisterReceiver(myReceiver);<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样在运行app的时候，只要改变网络状态，app就会弹出一条toast显示“network changed”.但如果想在不运行这个app的时候也能进行监听，这就要靠<strong>静态注册</strong>了。</p>
+<h3 id="静态注册"><a href="#静态注册" class="headerlink" title="静态注册"></a>静态注册</h3><p>静态注册的思路和动态注册思路一样，只不过不在java代码中写,而是在<code>AndroidManifest.xml</code>进行注册，在<code>&lt;application&gt;&lt;application/&gt;</code>内加入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyReceiver&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">action</span>  </span><br><span class="hljs-tag">                    <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;</span></span><br><span class="hljs-tag">                    <span class="hljs-attr">tools:ignore</span>=<span class="hljs-string">&quot;BatteryLife&quot;</span> /&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>主要看<code>&lt;intent-filter&gt;</code>标签，同样起到了过滤效果。</p>
+<h2 id="自定义广播"><a href="#自定义广播" class="headerlink" title="自定义广播"></a>自定义广播</h2><p>自定义广播通过<code>Intent</code>进行发送，应该还是好理解的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Intent intent = <span class="hljs-keyword">new</span> Intent(<span class="hljs-string">&quot;com.agno3.MY_BROADCAST&quot;</span>);<br>sendBroadcast(intent);<br></code></pre></td></tr></table></figure>
+<p>把它放在button的监听事件中（或其他触发方式）,点击按钮就能发送自定义的广播了，同样可以用自定义的接收器进行接收：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//custom receiver</span><br><span class="hljs-keyword">package</span> com.notice.agno3.receiver;<br><br><span class="hljs-keyword">import</span> android.content.BroadcastReceiver;<br><span class="hljs-keyword">import</span> android.content.Context;<br><span class="hljs-keyword">import</span> android.content.Intent;<br><span class="hljs-keyword">import</span> android.widget.Toast;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BroadcastReceiver</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> </span>&#123;<br>        <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span>write what you want to do when receive a broadcast</span><br>        Toast.makeText(context,<span class="hljs-string">&quot;button is clicked it has sent a broad cast&quot;</span> ,Toast.LENGTH_SHORT ).show();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>然后是MainActivity.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//MainActivity.java</span><br><span class="hljs-keyword">package</span> com.notice.agno3.receiver;<br><br><span class="hljs-keyword">import</span> android.content.Intent;<br><span class="hljs-keyword">import</span> android.content.IntentFilter;<br><span class="hljs-keyword">import</span> android.support.v7.app.AppCompatActivity;<br><span class="hljs-keyword">import</span> android.os.Bundle;<br><span class="hljs-keyword">import</span> android.view.View;<br><span class="hljs-keyword">import</span> android.widget.Button;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> IntentFilter intentFilter;<br>    <span class="hljs-keyword">private</span>  MyReceiver myReceiver;<br>    <span class="hljs-keyword">private</span> Button button;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-comment">//button</span><br>        button = findViewById(R.id.button);<br>        button.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                <span class="hljs-comment">//send receiver</span><br>                Intent intent = <span class="hljs-keyword">new</span> Intent(<span class="hljs-string">&quot;com.agno3.MY_RECEIVER&quot;</span>);<br>                sendBroadcast(intent);<br>            &#125;<br>        &#125;);<br>        <span class="hljs-comment">//set the filter</span><br>        intentFilter = <span class="hljs-keyword">new</span> IntentFilter();<br>        intentFilter.addAction(<span class="hljs-string">&quot;com.agno3.MY_RECEIVER&quot;</span>);<br>        myReceiver = <span class="hljs-keyword">new</span> MyReceiver();<br>        <span class="hljs-comment">//register</span><br>        registerReceiver(myReceiver, intentFilter);<br>    &#125;<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onDestroy();<br>        unregisterReceiver(myReceiver);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p> 点击屏幕上按钮就会有toast:”button is clicked it has sent a broad cast”这样就完成了一次send + receive 的完整操作。注意这里的广播其他应用也是可以接收的，要发送其他应用无法接收的需要本底广播，详见下篇。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/android/">android</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/BroadcastReceiver/">BroadcastReceiver</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E5%99%A8/">广播接收器</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/05/07/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%811%E2%80%94%E2%80%94%E5%A4%8D%E6%95%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">正弦稳态1——复数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/04/26/%E5%B0%8F%E8%AE%B0/">
+                        <span class="hidden-mobile">小记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
