@@ -1,25 +1,32 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" >
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
   <meta name="author" content="Hhhxiao">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hhhxiao">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hhhxiao">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hhhxiao">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Hhhxiao</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
 
@@ -39,7 +46,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -50,8 +57,9 @@
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>AgNO3</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -125,15 +133,11 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
         
       </ul>
     </div>
@@ -141,14 +145,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg_main.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hhhxiao's Blog">
+            <span class="h2" id="subtitle" title="Welcome to hhhxiao&#39;s blog">
               
-                Hhhxiao's Blog
+                Welcome to hhhxiao's blog
               
             </span>
 
@@ -183,11 +187,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/05/11/ddfs-0/">ddfs</a>
+        <a href="/2021/05/11/ddfs-0/" target="_blank">
+          ddfs
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/05/11/ddfs-0/">
+        <a href="/2021/05/11/ddfs-0/" target="_blank">
           
           
             
@@ -228,11 +234,13 @@ tradition
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/16/Deduplication/">Deduplication</a>
+        <a href="/2021/04/16/Deduplication/" target="_blank">
+          Deduplication
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/16/Deduplication/">
+        <a href="/2021/04/16/Deduplication/" target="_blank">
           
           
             
@@ -276,11 +284,13 @@ nonoverlapping
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/15/C%E8%AF%AD%E8%A8%80%E7%9A%84%E4%B8%80%E4%BA%9B%E5%85%B3%E9%94%AE%E5%AD%97/">C语言的一些关键字(C语言复习一)</a>
+        <a href="/2021/02/15/C%E8%AF%AD%E8%A8%80%E7%9A%84%E4%B8%80%E4%BA%9B%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank">
+          C语言的一些关键字(C语言复习一)
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/15/C%E8%AF%AD%E8%A8%80%E7%9A%84%E4%B8%80%E4%BA%9B%E5%85%B3%E9%94%AE%E5%AD%97/">
+        <a href="/2021/02/15/C%E8%AF%AD%E8%A8%80%E7%9A%84%E4%B8%80%E4%BA%9B%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank">
           
           
             
@@ -324,11 +334,13 @@ staticstatic主要有如下三个用法
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAjava-ssm%E9%A1%B9%E7%9B%AE/"></a>
+        <a href="/2021/02/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAjava-ssm%E9%A1%B9%E7%9B%AE/" target="_blank">
+          
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAjava-ssm%E9%A1%B9%E7%9B%AE/">
+        <a href="/2021/02/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAjava-ssm%E9%A1%B9%E7%9B%AE/" target="_blank">
           
           
             
@@ -359,18 +371,18 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/04/26/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1(1)/">C++面向对象1</a>
+        <a href="/2019/04/26/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1(1)/" target="_blank">
+          C++面向对象1
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/04/26/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1(1)/">
+        <a href="/2019/04/26/C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1(1)/" target="_blank">
           
           
             
           
-          对象和类要解释什么是类,什么是对象还真实很麻烦的事情,但我尽量吧.
-传统的面向过程编程是一步一步地按照顺序执行的。比如说我要计算一个班10个学生的平均成绩，我会先把这10个数据准备好，然后再求和，最后把和再除以10 ，这样一步一步地把结果算出来。这就是所谓的面向过程的编程。
-而面向对象却不一样，程序要操作的是对象(Object).还是刚刚那个程序，从面向对象的角度来说我们要做的是计算学生的平均成绩
+          文章的搜索结果描述
         </a>
       </p>
 
@@ -415,16 +427,18 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/02/25/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
+        <a href="/2019/02/25/%E7%BD%91%E7%BB%9C%E5%B1%82/" target="_blank">
+          网络层
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/02/25/%E7%BD%91%E7%BB%9C%E5%B1%82/">
+        <a href="/2019/02/25/%E7%BD%91%E7%BB%9C%E5%B1%82/" target="_blank">
           
           
             
           
-          寒假在家基本看完了谢希仁的《计算机网络》，其中最重要的四五两章感觉看的不明不白的，这里特地做个总结。
+          网络层
         </a>
       </p>
 
@@ -467,16 +481,18 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/09/24/%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B0%E8%A1%A8%E7%A4%BA/">带符号数表示</a>
+        <a href="/2018/09/24/%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B0%E8%A1%A8%E7%A4%BA/" target="_blank">
+          带符号数表示
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/09/24/%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B0%E8%A1%A8%E7%A4%BA/">
+        <a href="/2018/09/24/%E5%B8%A6%E7%AC%A6%E5%8F%B7%E6%95%B0%E8%A1%A8%E7%A4%BA/" target="_blank">
           
           
             
           
-          最近在看有关数值的表示有关的知识，因为实在太过混乱，所以在这里总结一下，主要讲原码，反码和补码这三种表示带符号数的表示方法。
+          文章的搜索结果描述
         </a>
       </p>
 
@@ -521,18 +537,18 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/09/20/Graphviz%E2%80%94%E2%80%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BB%98%E5%88%B6%E4%BD%A0%E7%9A%84%E7%BB%93%E6%9E%84%E5%9B%BE/">Graphviz——用代码绘制你的结构图</a>
+        <a href="/2018/09/20/Graphviz%E2%80%94%E2%80%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BB%98%E5%88%B6%E4%BD%A0%E7%9A%84%E7%BB%93%E6%9E%84%E5%9B%BE/" target="_blank">
+          Graphviz——用代码绘制你的结构图
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/09/20/Graphviz%E2%80%94%E2%80%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BB%98%E5%88%B6%E4%BD%A0%E7%9A%84%E7%BB%93%E6%9E%84%E5%9B%BE/">
+        <a href="/2018/09/20/Graphviz%E2%80%94%E2%80%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BB%98%E5%88%B6%E4%BD%A0%E7%9A%84%E7%BB%93%E6%9E%84%E5%9B%BE/" target="_blank">
           
           
             
           
-          最近在看《大话数据结构》的时候一直不知道书上的那种图是咋画的:
-
-直到这两天才偶然发现这个软件Graphviz,下面一起来详细看看这个软件
+          文章的搜索结果描述
         </a>
       </p>
 
@@ -575,20 +591,18 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/09/13/%CE%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F/">λ表达式</a>
+        <a href="/2018/09/13/%CE%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank">
+          λ表达式
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/09/13/%CE%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <a href="/2018/09/13/%CE%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank">
           
           
             
           
-          匿名函数啥是匿名函数在写这篇文章之前我去查了一遍λ表达式，然后就发现了这个东西——匿名函数，至于为啥要说匿名函数，我们以后再说，下面是wiki对匿名函数的定义：
-
-在计算机编程中，匿名函数（英语：anonymous function）是指一类无需定义标识符（函数名）的函数或子程序，普遍存在于多种编程语言中。
-
-相信你们看完后对匿名函数有一个大概印象了。顾名思义，匿名函数就是没名字的函数，你可能会问
+          文章的搜索结果描述
         </a>
       </p>
 
@@ -633,16 +647,18 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/09/12/%E9%97%B2%E8%81%8A-md/">闲聊</a>
+        <a href="/2018/09/12/%E9%97%B2%E8%81%8A-md/" target="_blank">
+          闲聊
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/09/12/%E9%97%B2%E8%81%8A-md/">
+        <a href="/2018/09/12/%E9%97%B2%E8%81%8A-md/" target="_blank">
           
           
             
           
-          说好坚持每周一篇的，但是做不到啊，这篇主要来说说这一个月干了啥吧。。。最简单的概括就是，能感到自己在飞速进步，也能感受到自己有多菜。
+          自述
         </a>
       </p>
 
@@ -679,15 +695,9 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -699,7 +709,7 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -742,10 +752,11 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
   
 </footer>
 
-<!-- SCRIPTS -->
 
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -756,51 +767,32 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
-
-
-
-
-
-
-
-
   <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
 
 
 
@@ -818,7 +810,6 @@ title: 从零开始搭建java ssm项目categories: javadescription: 文章的搜
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>
